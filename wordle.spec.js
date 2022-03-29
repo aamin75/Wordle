@@ -1,4 +1,21 @@
 const { TestWatcher } = require("jest");
+//////////////////////////////////////////////////////////
+//                  ALGORITHM   (A)                     //
+//////////////////////////////////////////////////////////
+
+// there is no length condition in test mode
+// enter the guessed and the correct word
+// declare an empty result array 
+// create an array form the correct word
+// declare an arbitrary reslut variable (arbRes) and an arbitrary result array (arbResArr)
+// start a loop for every letter in the guessed word
+// search for the letter in the correct word
+// positive answer: find its place in the correct word
+// if the letter in the correct place, assign correct case to the (arbRes) and push the letter to the (arbResArr)
+// if the letter in another place in the correct word, but not included in the (arbResArr) and there is no similar letter in the right place 
+// of the guessed word, then assign misplaced case to the (arbRes) and empty the place of the correct letter from the correct array (not correct word) to avoid repeating issue
+// if something else, assign incorrect case to the (arbRes)
+// push the letter and its result to the result array
 
 function feedback(guess, correct) {
   const arr = [];
@@ -16,6 +33,7 @@ function feedback(guess, correct) {
         arbResArr.push(guess[i]);
       } else if (!arbResArr.includes(guess[i]) && correct[gIndex] != guess[gIndex]) {
         arbRes = 'misplaced';
+        corrArray[gIndex] = [];
       } else {
         arbRes = 'incorrect';
       };
