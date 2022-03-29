@@ -12,8 +12,8 @@ function submitFn() {                                   // starting of Algorithm
   var resultArray = [];                                 // initial result's case array
   var arbRes;                                           // arbitrary result
   var arbResArr = [];                                   // arbitrary result array for correct letters
-  if (gArray.length != wLength) {                       // check the length of the guessed and the correct words
-    console.log('Error, the length of your word is not correct'); // print an error message to notify the user for longer or shorter words
+  if (gArray.length != wLength || corrArray.length != wLength) {  // check the length of the guessed and the correct words
+    alert('Error, the length of your word is not correct'); // print an error message to notify the user for longer or shorter words
   } else {
     gArray.forEach((letr, index) => {                   // loop for each letter in the guessed word
       if (!corrArray.includes(letr)) {                  // search for the letter in the correct array
