@@ -16,6 +16,10 @@ const { TestWatcher } = require("jest");
 // of the guessed word, then assign misplaced case to the (arbRes) and empty the place of the correct letter from the correct array (not correct word) to avoid repeating issue
 // if something else, assign incorrect case to the (arbRes)
 // push the letter and its result to the result array
+// Six tests have been used and passed
+// Tests included: single letter as correct and as incorrect
+// three letters words: correct, correct and incorrect, correct and misplaced
+// five letters word: correct and misplaced and incorrect
 
 function feedback(guess, correct) {
   const arr = [];
@@ -48,26 +52,21 @@ function feedback(guess, correct) {
   return arr;
 }
 
+// single letter as correct
 test('a + a => correct', () => {
   const result = feedback('a', 'a');
   expect(result).toEqual([
     { letter: 'a', result: 'correct' },
   ]);
 });
+// single letter as incorrect
 test('a + b => incorrect', () => {
   const result = feedback('a', 'b');
   expect(result).toEqual([
     { letter: 'a', result: 'incorrect' },
   ]);
 });
-test('abb + abc => incorrect', () => {
-  const result = feedback('abb', 'abc');
-  expect(result).toEqual([
-    { letter: 'a', result: 'correct' },
-    { letter: 'b', result: 'correct' },
-    { letter: 'b', result: 'incorrect' },
-  ]);
-});
+// three letters words: correct
 test('abc + abc => incorrect', () => {
   const result = feedback('abc', 'abc');
   expect(result).toEqual([
@@ -76,6 +75,16 @@ test('abc + abc => incorrect', () => {
     { letter: 'c', result: 'correct' },
   ]);
 });
+// three letters words: correct and incorrect
+test('abb + abc => incorrect', () => {
+  const result = feedback('abb', 'abc');
+  expect(result).toEqual([
+    { letter: 'a', result: 'correct' },
+    { letter: 'b', result: 'correct' },
+    { letter: 'b', result: 'incorrect' },
+  ]);
+});
+// three letters words: correct and misplaced
 test('cba + abc => incorrect', () => {
   const result = feedback('cba', 'abc');
   expect(result).toEqual([
@@ -84,11 +93,14 @@ test('cba + abc => incorrect', () => {
     { letter: 'a', result: 'misplaced' },
   ]);
 });
-test('bbb + abc => incorrect', () => {
-  const result = feedback('bbb', 'abc');
+// five letters word: correct, misplaced and incorrect
+test('print + power => incorrect', () => {
+  const result = feedback('print', 'power');
   expect(result).toEqual([
-    { letter: 'b', result: 'incorrect' },
-    { letter: 'b', result: 'correct' },
-    { letter: 'b', result: 'incorrect' },
+    { letter: 'p', result: 'correct' },
+    { letter: 'r', result: 'misplaced' },
+    { letter: 'i', result: 'incorrect' },
+    { letter: 'n', result: 'incorrect' },
+    { letter: 't', result: 'incorrect' },
   ]);
 });
