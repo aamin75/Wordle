@@ -13,7 +13,7 @@ function submitFn() {                                   // starting of Algorithm
   var arbRes;                                           // arbitrary result
   var arbResArr = [];                                   // arbitrary result array for correct letters
   if (gArray.length != wLength) {                       // check the length of the guessed and the correct words
-    console.log('Error, your word is not a five letters word'); // print an error message to notify the user for longer words
+    console.log('Error, the length of your word is not correct'); // print an error message to notify the user for longer or shorter words
   } else {
     gArray.forEach((letr, index) => {                   // loop for each letter in the guessed word
       if (!corrArray.includes(letr)) {                  // search for the letter in the correct array
